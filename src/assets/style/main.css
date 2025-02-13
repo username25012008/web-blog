@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+.container {
+    width: 95%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+@theme {
+    --color-regal-blue: #243c5a;
+}
