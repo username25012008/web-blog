@@ -13,19 +13,17 @@ const Signup = () => {
   const navigate = useNavigate();
   const registration = async (num) => {
     const formData = new FormData();
-    num.phone = num.phone.replace(/\D/g, "");
+    num.phone = "+998" + num.phone.replace(/\D/g, "");
     formData.append("full_name", num.full_name);
     formData.append("phone_number", num.phone);
     formData.append("password", num.password);
     formData.append("password2", num.password2);
-
     if (num.avatar && num.avatar.file) {
       formData.append("avatar", num.avatar.file);
     }
     if (num.phone.length < 9) {
       alert("Xatolik ketdi!");
     } else {
-      num.phone = "+998" + num.phone;
       let res = await apiClient.post("/account/register/", formData);
       if (res?.status == 200 || res?.status == 201) {
         navigate("/login");
